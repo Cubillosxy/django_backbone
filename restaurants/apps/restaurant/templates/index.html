@@ -51,10 +51,10 @@
                       <div class="input-group-btn">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Elije donde comar <span class="caret"></span></button>
                         <ul class="dropdown-menu">
-                          <li><a href="#">Bogota</a></li>
-                          <li><a href="#">Medellin</a></li>
-                          <li><a href="#">Villavicencio</a></li>
-                          <li><a href="#"></a></li>
+                           {% for city in cities %}
+                               <li><a href="#">{{ city.name }}</a></li>
+                           {% endfor %}
+
                         </ul>
                       </div><!-- /btn-group -->
                       <input type="text" class="form-control" aria-label="..." placeholder="Encuentra tu restaurante favorite">
@@ -66,71 +66,50 @@
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label for=""> Tipo de comida</label>
-                        <div class="checkbox">
-                            <label for=""> <input type="checkbox">Todas</label>
-                        </div>
-                        <div class="checkbox">
-                            <label for=""> <input type="checkbox">Colombiana</label>
-                        </div>
-                        <div class="checkbox">
-                            <label for=""> <input type="checkbox">China</label>
-                        </div>
-                        <div class="checkbox">
-                            <label for=""> <input type="checkbox">Italiana</label>
-                        </div>
+
+                        {% for category in categories %}
+                            <div class="checkbox">
+                                <label for=""> <input type="checkbox">{{ category.name }}</label>
+                            </div>
+                        {% endfor %}
+
                     </div>
 
                     <div class="form-group">
                         <label for=""> Formas de pago</label>
-                        <div class="checkbox">
-                            <label for=""> <input type="checkbox">Efectivo</label>
-                        </div>
-                        <div class="checkbox">
-                            <label for=""> <input type="checkbox">Tranferencia</label>
-                        </div>
-                        <div class="checkbox">
-                            <label for=""> <input type="checkbox">Tarjeta de credito</label>
-                        </div>
-                        <div class="checkbox">
-                            <label for=""> <input type="checkbox">Efecty</label>
-                        </div>
+                        {% for payment in payments %}
+                            <div class="checkbox">
+                                <label for=""> <input type="checkbox">{{ payment.pay }}</label>
+                            </div>
+                        {% endfor %}
+
                     </div>
                 </div>
                 <div class="col-sm-9">
                     <div class="list-group">
-                        <a href="" class="list-group-item">
-                            <div class="col-sm-3">
-                                <img src="http://placehold.it/350x250" alt="" class="media-object img-rounded img-responsive">
-                            </div>
-                            <div class="col-sm-6">
-                                <h3>El viajero</h3>
-                                <p>
-                                    El mejor restaurante para venir en familia
-                                </p>
-                            </div>
-                            <div class="col-sm-3 text-center">
-                                <h2>4 <small>tips</small></h2>
-                                <button class="btn btn-primary btn-lg btn-block">Detalles</button>
-                            </div>
-                        </a>
+
+                        {% for restaurant in restaurants %}
+                            <a href="" class="list-group-item">
+                                <div class="col-sm-3">
+                                    <img src="{{ MEDIA_URL }}{{ restaurant.image }}" alt="" class="media-object img-rounded img-responsive">
+                                </div>
+                                <div class="col-sm-6">
+                                    <h3>{{ restaurant.name }}</h3>
+                                    <p>
+                                        {{ restaurant.description }}
+                                    </p>
+                                </div>
+                                <div class="col-sm-3 text-center">
+                                    <h2>4 <small>tips</small></h2>
+                                    <button class="btn btn-primary btn-lg btn-block">Detalles</button>
+                                </div>
+                            </a>
+
+                        {% endfor %}
+
+
                     </div>
-                    <div class="list-group">
-                        <a href="" class="list-group-item">
-                            <div class="col-sm-3">
-                                <img src="http://placehold.it/350x250" alt="" class="media-object img-rounded img-responsive">
-                            </div>
-                            <div class="col-sm-6">
-                                <h3>El Guatecano</h3>
-                                <p>
-                                    El mejor restaurante de la region llanera
-                                </p>
-                            </div>
-                            <div class="col-sm-3 text-center">
-                                <h2>4 <small>tips</small></h2>
-                                <button class="btn btn-primary btn-lg btn-block">Detalles</button>
-                            </div>
-                        </a>
-                    </div>
+
                 </div>
 
             </div>
